@@ -1,0 +1,33 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+var findTheDifference = function(s, t) {
+    var sLen = s.length;
+    var tLen = t.length;
+    var objs={};
+    var objt={};
+    for(var i = 0;i<sLen;i++){
+        if(!objs[s.charAt(i)]){
+            objs[s.charAt(i)] = 1;
+        }else{
+            objs[s.charAt(i)]++;
+        }
+    }
+    for(var j = 0;j<tLen;j++){
+        if(!objt[t.charAt(j)]){
+            objt[t.charAt(j)] = 1;
+        }else{
+            objt[t.charAt(j)]++;
+        }
+    }
+    for(var k in objt){
+        if(!(k in objs)||objs[k]!=objt[k]){
+            return k;
+        }
+    }
+};
+var s = "abcd";
+var t = "abcde";
+console.log(findTheDifference(s,t));
